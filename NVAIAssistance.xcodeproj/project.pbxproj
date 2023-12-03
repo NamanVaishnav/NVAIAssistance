@@ -13,6 +13,8 @@
 		ED7100082B1C51F10039567C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED7100072B1C51F10039567C /* Preview Assets.xcassets */; };
 		ED7100102B1C530D0039567C /* SiriWaveView in Frameworks */ = {isa = PBXBuildFile; productRef = ED71000F2B1C530D0039567C /* SiriWaveView */; };
 		ED7100132B1C533C0039567C /* XCAOpenAIClient in Frameworks */ = {isa = PBXBuildFile; productRef = ED7100122B1C533C0039567C /* XCAOpenAIClient */; };
+		ED7100152B1C55490039567C /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7100142B1C55490039567C /* Models.swift */; };
+		ED7100172B1C55D70039567C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7100162B1C55D70039567C /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		ED7100022B1C51F00039567C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ED7100042B1C51F10039567C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED7100072B1C51F10039567C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ED7100142B1C55490039567C /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		ED7100162B1C55D70039567C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		ED71FFFD2B1C51F00039567C /* NVAIAssistance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NVAIAssistance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -67,6 +71,8 @@
 				ED7100022B1C51F00039567C /* ContentView.swift */,
 				ED7100042B1C51F10039567C /* Assets.xcassets */,
 				ED7100062B1C51F10039567C /* Preview Content */,
+				ED7100142B1C55490039567C /* Models.swift */,
+				ED7100162B1C55D70039567C /* ViewModel.swift */,
 			);
 			path = NVAIAssistance;
 			sourceTree = "<group>";
@@ -149,7 +155,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED7100152B1C55490039567C /* Models.swift in Sources */,
 				ED7100032B1C51F00039567C /* ContentView.swift in Sources */,
+				ED7100172B1C55D70039567C /* ViewModel.swift in Sources */,
 				ED7100012B1C51F00039567C /* NVAIAssistanceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
