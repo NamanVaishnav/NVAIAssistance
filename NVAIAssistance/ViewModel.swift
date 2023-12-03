@@ -22,6 +22,7 @@ class ViewModel: NSObject {
     var recordingtimer: Timer?
     var audioPower = 0.0
     var prevAudioPower: Double?
+    var processingSpeechTask: Task<Void, Never>?
     
     var selectedVoice = VoiceType.alloy
     
@@ -117,10 +118,32 @@ class ViewModel: NSObject {
         resetValue()
         do {
             let data = try Data(contentsOf: captureURL)
-            try playAudio(data: data)
+//            try playAudio(data: data)
+            processingSpeechTask = processSpeechTask(audioData: data)
         } catch {
             state = .error(error)
             resetValue()
+        }
+    }
+    
+    func processSpeechTask(audioData: Data) -> Task<Void, Never> {
+        Task { @MainActor [unowned self] in
+            do {
+                state = .processingSpeech
+                let prompt = try await client.generateAudioTransciptions(audioData: audioData)
+                
+                try Task.checkCancellation()
+                let responseText = try await client.promptChatGPT(prompt: prompt)
+                try Task.checkCancellation()
+                let data = try await client.generateSpeechFrom(input: responseText, voice: .init(rawValue: selectedVoice.rawValue) ?? .alloy)
+                try Task.checkCancellation()
+                try self.playAudio(data: data)
+            } catch {
+                if Task.isCancelled { return }
+                state = .error(error)
+                resetValue()
+            }
+            
         }
     }
     
@@ -145,7 +168,9 @@ class ViewModel: NSObject {
     }
     
     func cancelProcessingTask() {
-        
+        processingSpeechTask?.cancel()
+        resetValue()
+        state = .idle
     }
     
     func resetValue(){
